@@ -452,18 +452,16 @@ MonoBehaviour:
   InputAuthorized: 1
   AnalogInput: 0
   ScriptDrivenInput: 0
-  WalkSpeed: 6
+  WalkSpeed: 5.5
   ShouldSetMovement: 1
   IdleThreshold: 0.05
-  Acceleration: 10
-  Deceleration: 10
+  Acceleration: 5
+  Deceleration: 5
   InterpolateMovementSpeed: 0
   WalkParticles:
   - {fileID: 198499441280680728}
   TouchTheGroundParticles: []
   TouchTheGroundSfx: []
-  FootprintPrefab: {fileID: 4889970769782205390, guid: 775c096ec412c8447b24dc3f9e62c07b,
-    type: 3}
 --- !u!114 &114728939346675328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,7 +721,7 @@ MonoBehaviour:
   ObstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  ObstaclesCheckFrequency: 1
+  ObstaclesCheckFrequency: 0.2
 --- !u!114 &114922132597437960
 MonoBehaviour:
   m_ObjectHideFlags: 0
