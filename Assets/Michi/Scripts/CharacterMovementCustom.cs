@@ -82,7 +82,8 @@ namespace MoreMountains.TopDownEngine
         public float FootprintOffsetRange = 0.5f; 
         private int _stepCount = 0; 
         public int StepsPerFootprint = 20;  
-        private string playerID; 
+        private string playerID;
+        public string timestamp;
 
 
 
@@ -98,7 +99,12 @@ namespace MoreMountains.TopDownEngine
             public Vector3 position;
             public Quaternion rotation;
             public int prefabIndex;
-            public string playerID; 
+            public string playerID;
+            public string timestamp;
+            public float colorR; 
+            public float colorG;
+            public float colorB; 
+            public float colorA = 1;
         }
 
 
@@ -123,6 +129,11 @@ namespace MoreMountains.TopDownEngine
                 data.rotation = footprintRotation;
                 data.prefabIndex = UnityEngine.Random.Range(0, FootprintPrefabs.Length);
                 data.playerID = this.playerID;
+                data.timestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffff");
+                data.colorR = playerColor.r;
+                data.colorG = playerColor.g;
+                data.colorB = playerColor.b;
+                data.colorA = playerColor.a;
                 allFootprints.footprints.Add(data);
             }
         }
@@ -419,9 +430,16 @@ namespace MoreMountains.TopDownEngine
 
 
 
+
+
+
+
+
+
         public void LoadFootprints()
         {
             int highestID = 0;
+            float desiredAlpha = 0.5f; // Setzen Sie hier den gewünschten Alpha-Wert
 
             if (File.Exists(GetFilePath()))
             {
@@ -432,7 +450,17 @@ namespace MoreMountains.TopDownEngine
                 foreach (var footprint in existingData.footprints)
                 {
                     GameObject selectedFootprintPrefab = FootprintPrefabs[footprint.prefabIndex];
-                    Instantiate(selectedFootprintPrefab, footprint.position, footprint.rotation);
+                    GameObject footprintInstance = Instantiate(selectedFootprintPrefab, footprint.position, footprint.rotation);
+
+                    // Erhalten des SpriteRenderer und Anpassen des Alpha-Werts
+                    SpriteRenderer spriteRenderer = footprintInstance.GetComponent<SpriteRenderer>();
+                    if (spriteRenderer != null)
+                    {
+                        Color currentColor = spriteRenderer.color;
+                        currentColor.a = desiredAlpha; // Anpassen des Alpha-Werts
+                        spriteRenderer.color = currentColor;
+                    }
+
                     int id;
                     bool success = int.TryParse(footprint.playerID, out id);
                     if (success && id > highestID)
@@ -448,6 +476,11 @@ namespace MoreMountains.TopDownEngine
                 playerID = "001";
             }
         }
+
+
+
+
+
 
 
 
@@ -479,9 +512,12 @@ namespace MoreMountains.TopDownEngine
         }
 
 
+        private Color playerColor;
+
         private void GeneratePlayerID()
         {
             playerID = DateTime.Now.ToString("yyyyMMddHHmmssffff");
+            playerColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
         }
 
         protected virtual void HandleFrozen()
