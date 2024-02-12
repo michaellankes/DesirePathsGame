@@ -495,13 +495,40 @@ namespace MoreMountains.TopDownEngine
 
 
 
+        //private string GetFilePath()
+        //{
+        //    string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+        //    string folderName = "TopDownData";
+
+        //    string folderPath = Path.Combine(desktopPath, folderName);
+
+        //    if (!Directory.Exists(folderPath))
+        //    {
+        //        Directory.CreateDirectory(folderPath);
+        //    }
+
+        //    return Path.Combine(folderPath, "footprints.json");
+        //}
+
+
+
+
+
+
+
         private string GetFilePath()
         {
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string directoryPath = Application.dataPath;
 
-            string folderName = "TopDownData";
+            if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.LinuxPlayer || Application.platform == RuntimePlatform.OSXPlayer)
+            {
+                directoryPath = Path.GetDirectoryName(directoryPath);
+            }
 
-            string folderPath = Path.Combine(desktopPath, folderName);
+            string folderName = "GameData";
+
+            string folderPath = Path.Combine(directoryPath, folderName);
 
             if (!Directory.Exists(folderPath))
             {
@@ -510,6 +537,18 @@ namespace MoreMountains.TopDownEngine
 
             return Path.Combine(folderPath, "footprints.json");
         }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         private Color playerColor;
