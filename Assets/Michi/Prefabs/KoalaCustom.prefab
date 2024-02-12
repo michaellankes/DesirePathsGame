@@ -10095,7 +10095,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498750440386690}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cde870ae7090b974bb115e88bfbf8320, type: 3}
   m_Name: 
@@ -10240,7 +10240,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498750440386690}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c86c96e06d6ae44b822a6ab24e1b8fe, type: 3}
   m_Name: 
@@ -10438,7 +10438,8 @@ MonoBehaviour:
   - {fileID: 4763912272866946941, guid: 9ffe82253d0fee145b2f568b48c731b9, type: 3}
   - {fileID: 4763912272866946941, guid: 9ffe82253d0fee145b2f568b48c731b9, type: 3}
   FootprintOffsetRange: 0.5
-  StepsPerFootprint: 30
+  StepsPerFootprint: 15
+  timestamp: 
   allFootprints:
     footprints: []
 --- !u!1 &1561075265052736

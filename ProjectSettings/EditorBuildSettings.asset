@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Michi/Scenes/StartScreen.unity
+    guid: d22e9d6c59c20c642a975aed770b6a8d
+  - enabled: 1
+    path: Assets/TopDownEngine/ThirdParty/MoreMountains/MMTools/Tools/MMSceneLoading/LoadingScreens/MMAdditiveLoadingScreen.unity
+    guid: d89b77a7a68c1844280c6ff2e49f95b8
+  - enabled: 1
     path: Assets/Michi/Scenes/KoalaGame04.unity
     guid: 23f4de57003d1454fa9856d1cbdcc9dd
   m_configObjects: {}
